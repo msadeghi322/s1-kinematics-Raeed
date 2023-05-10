@@ -1,12 +1,14 @@
 # S1 kinematic encoding analysis
 
-This repository contains analysis code relevant to the manuscript "Area 2 of primary somatosensory cortex encodes kinematics of the whole arm", which can be found [here](https://doi.org/10.7554/eLife.48198).
+This repository contains analysis code relevant to the manuscript "Area 2 of primary somatosensory cortex encodes kinematics of the whole arm", 
+which can be found [here](https://doi.org/10.7554/eLife.48198).
 
 ## How to get the code
 
 ### Using `git`
 
-The best way to get the code is to clone this repository with `git`. When cloning the repository, make sure to use the -r flag to also clone the submodules in `lib/`.
+The best way to get the code is to clone this repository with `git`. When cloning the repository, make sure to use the -r flag to also clone 
+the submodules in `lib/`.
 
 ```
 git clone -r https://github.com/raeedcho/s1-kinematics.git
@@ -18,13 +20,17 @@ You can also download the code from [here](https://github.com/raeedcho/s1-kinema
 
 ## Execution instructions
 
-The main scripts used to generate the figures from the behavioral and neural data (found [here](https://doi.org/10.5061/dryad.nk98sf7q7)) are `plotRFMaps.m`, `twoworkspace_analysis.m`, and `actpas_analysis.m`.
+The main scripts used to generate the figures from the behavioral and neural data (found [here](https://doi.org/10.5061/dryad.nk98sf7q7)) 
+are `plotRFMaps.m`, `twoworkspace_analysis.m`, and `actpas_analysis.m`.
 
-Before running the main analysis scripts, add `lib/` and all its subdirectories to the MATLAB path. Download the data to disk and modify the `dataroot` at the top of the scripts to point to the unzipped data directory. Then simply run the scripts. Note that because these scripts use extensive cross-validation, the analysis will take a long time to run.
+Before running the main analysis scripts, add `lib/` and all its subdirectories to the MATLAB path. Download the data to disk and modify 
+the `dataroot` at the top of the scripts to point to the unzipped data directory. Then simply run the scripts. Note that because these scripts 
+use extensive cross-validation, the analysis will take a long time to run.
 
 ## Environmental requirements
 
-I've tested this code most recently on MATLAB 2019a with the following toolboxes installed (note that many of these toolboxes are not actually required for the code to run--this was just my most recent MATLAB environment):
+I've tested this code most recently on MATLAB 2019a with the following toolboxes installed (note that many of these toolboxes are not actually required 
+for the code to run--this was just my most recent MATLAB environment):
 
 - Simulink                                              Version 9.3         (R2019a)
 - Bioinformatics Toolbox                                Version 4.12        (R2019a)
