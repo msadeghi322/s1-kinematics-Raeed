@@ -7,13 +7,23 @@
 %%      for ease of use, as the cross-validation can take a significant
 %%      amount of time.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+clearvars
+clc
+close all
+set(0,'DefaultFigureWindowStyle','docked')
+set(groot, 'defaultAxesTickDir', 'out');
+
+if exist('twoWorkspaceAnalysis.mat','file')
+    load('twoWorkspaceAnalysis.mat')
+else
+    
+
 
 %% Set up meta info and load trial data
-    if ispc
-        dataroot = 'G:\raeed\project-data\limblab\s1-kinematics';
-    else
-        dataroot = '/data/raeed/project-data/limblab/s1-kinematics';
-    end
+addpath('D:\OneDrive - Northeastern University\Action Lab\01 Projects\Batista Collaboration\00 CST\01 Monkey Experiment\Neural Data Analysis\s1-kinematics-Raeed\lib');
+    
+    dataroot = 'D:\OneDrive - Northeastern University\Action Lab\01 Projects\Batista Collaboration\00 CST\01 Monkey Experiment\Neural Data Analysis\s1-kinematics-Raeed\data';
+    
     
     % load data
     file_info = dir(fullfile(dataroot,'reaching_experiments','*TRT*'));
@@ -127,6 +137,11 @@
         trial_data_cell{filenum} = td;
     end
 
+    
+    
+
+    
+    
 %% Plot example rasters
     num_trials = 2;
     for filenum = 4%1:length(trial_data_cell)
@@ -283,6 +298,8 @@
         fprintf('Processed file %d of %d at time %f\n',filenum,length(encoderResults_cell),toc(fileclock))
     end
 
+    
+end
 %% Plot out example firing rates
     % load data
     filenum = 4;
@@ -414,7 +431,7 @@
             ylabel(sprintf('%s pR2',getModelTitles(model_pairs{pairnum,2})))
         end
     end
-    suptitle('Pseudo-R^2 pairwise comparisons')
+    %suptitle('Pseudo-R^2 pairwise comparisons')
 
     % show scatter plot for hand/elbow pR2 within condition vs against condition
     for modelnum = 1:length(models_to_plot)
@@ -451,7 +468,7 @@
                 title(sprintf('Workspace %d',spacenum))
             end
         end
-        suptitle('Full pR^2 vs within condition pR^2')
+        %suptitle('Full pR^2 vs within condition pR^2')
     end
 
 %% Tuning curve shape comparison
@@ -511,7 +528,7 @@
             ylabel(sprintf('%s',getModelTitles(model_pairs{pairnum,2})))
         end
     end
-    suptitle('Tuning correlation pairwise comparisons')
+    %suptitle('Tuning correlation pairwise comparisons')
 
 %% PD shifts over all monkeys
     file_shifts = cell(length(encoderResults_cell),length(models_to_plot)); % shift tables for each model in each file
@@ -622,9 +639,9 @@
             end
     end
     figure(total_hists)
-    suptitle('PD shift histograms')
+    %suptitle('PD shift histograms')
     figure(scatters)
-    suptitle('PD shift scatter plots')
+    %suptitle('PD shift scatter plots')
 
     % PD shift VAF dotplots
         % find winners of PD shift
@@ -766,7 +783,7 @@
                 ylabel(sprintf('%s pR2',getModelTitles(model_pairs{pairnum,2})))
             end
         end
-        suptitle('Pseudo-R^2 pairwise comparisons')
+        %suptitle('Pseudo-R^2 pairwise comparisons')
 
     % tuning correlation comparison all models
         all_tuning_corr_winners = cell(length(monkey_names),size(session_colors,1));
@@ -816,7 +833,7 @@
                 ylabel(sprintf('%s',getModelTitles(model_pairs{pairnum,2})))
             end
         end
-        suptitle('Tuning correlation pairwise comparisons')
+        %suptitle('Tuning correlation pairwise comparisons')
 
     % PD shift for non-plotted models
         file_shifts = cell(length(encoderResults_cell),length(not_plot_models)); % shift tables for each model in each file
@@ -922,7 +939,7 @@
                 end
         end
         figure(total_hists)
-        suptitle('PD shift histograms')
+        %suptitle('PD shift histograms')
         figure(scatters)
-        suptitle('PD shift scatter plots')
+        %suptitle('PD shift scatter plots')
 

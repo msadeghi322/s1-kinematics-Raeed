@@ -3,13 +3,17 @@
 %%      script to run active-passive task analyses in manuscript
 %%      and plot out relevant details
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+clearvars
+clc
+close all
+set(0,'DefaultFigureWindowStyle','docked')
+set(groot, 'defaultAxesTickDir', 'out');
 %% Set up meta info
-    if ispc
-        dataroot = 'G:\raeed\project-data\limblab\s1-kinematics';
-    else
-        dataroot = '/data/raeed/project-data/limblab/s1-kinematics';
-    end
+addpath('D:\OneDrive - Northeastern University\Action Lab\01 Projects\Batista Collaboration\00 CST\01 Monkey Experiment\Neural Data Analysis\s1-kinematics-Raeed\lib');
+
+    
+    dataroot = 'D:\OneDrive - Northeastern University\Action Lab\01 Projects\Batista Collaboration\00 CST\01 Monkey Experiment\Neural Data Analysis\s1-kinematics-Raeed\data';
+    
     
     file_info = dir(fullfile(dataroot,'reaching_experiments','*COactpas*.mat'));
     filenames = horzcat({file_info.name})';
@@ -186,7 +190,7 @@
         ylabel('Hand speed (cm/s)')
         set(gca,'box','off','tickdir','out','xtick',[-0.5 0 0.12 0.5])
         set(gcf,'renderer','Painters')
-        suptitle(sprintf('Monkey %s %s',td(1).monkey, td(1).date_time))
+        %suptitle(sprintf('Monkey %s %s',td(1).monkey, td(1).date_time))
     
         %% Plot out example rasters for each direction
         dirs = unique(cat(1,td.tgtDir));
@@ -216,7 +220,7 @@
             subplot(length(dirs),length(td_temp),(dirnum-1)*length(td_temp)+1)
             ylabel(sprintf('Direction %f',dirs(dirnum)))
         end
-        suptitle(sprintf('Monkey %s %s',td(1).monkey, td(1).date_time))
+        %suptitle(sprintf('Monkey %s %s',td(1).monkey, td(1).date_time))
     end
 
 %% Loop through results to pull out relevant info
@@ -324,7 +328,7 @@
         axis on
         set(gca,'box','off','tickdir','out','xtick',[])
         ylabel('Firing rate (Hz)')
-        suptitle(sprintf('%s %s',session_trials.monkey{1},session_trials.date_time{1}))
+%        suptitle(sprintf('%s %s',session_trials.monkey{1},session_trials.date_time{1}))
         linkaxes(ax,'y')
 
         % output a counter
@@ -559,7 +563,7 @@
                 set(gca,'ylim',[0.4 1])
             end
         end
-        suptitle('Neural separability vs pR^2')
+%        suptitle('Neural separability vs pR^2')
     end
 
     % get correlation values for each crossval
@@ -635,6 +639,6 @@
                 'xtick',xvals,'xticklabel',{'Full pR^2','Active pR^2','Passive pR^2'},...
                 'ylim',[-1 1],'ytick',[-1 -0.5 0 0.5 1])
         end
-        suptitle(models_to_plot{modelnum})
+%        suptitle(models_to_plot{modelnum})
     end
 

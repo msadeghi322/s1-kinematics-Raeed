@@ -2,11 +2,8 @@
 
 %% set up
     % get the array maps
-    if ispc
-        dataroot = 'G:\raeed\project-data\limblab\s1-kinematics';
-    else
-        dataroot = '/data/raeed/project-data/limblab/s1-kinematics';
-    end
+    dataroot = 'D:\OneDrive - Northeastern University\Action Lab\01 Projects\Batista Collaboration\00 CST\01 Monkey Experiment\Neural Data Analysis\s1-kinematics-Raeed\data';
+    
     mapdir = fullfile(dataroot,'sensory_mapping');
 
     rf_map = readtable(fullfile(mapdir,'rf_map.csv'));
